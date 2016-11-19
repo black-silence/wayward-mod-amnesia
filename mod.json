@@ -1,12 +1,10 @@
 {
 	"name": "Amnesia",
 	"description": "You drank too much grog and lost some knowledge",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"author": "black silence",
 	"unloadable": true,
-	"files": [
-		"amnesia.js"
-	],
+	"file": "amnesia.js",
 	"hooks": [
 		"OnGameStart"
 	],
