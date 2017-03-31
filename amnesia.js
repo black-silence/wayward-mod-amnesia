@@ -1,6 +1,6 @@
-define(["require", "exports"], function (require, exports) {
+define(["require", "exports", "Utilities", "mod/Mod"], function (require, exports, Utilities_1, Mod_1) {
     "use strict";
-    class Mod extends Mods.Mod {
+    class Amnesia extends Mod_1.default {
         onInitialize(saveDataGlobal) {
         }
         onLoad(saveData) {
@@ -40,9 +40,9 @@ define(["require", "exports"], function (require, exports) {
             if (playedCount < 10) {
                 return;
             }
-            let chance = Utilities.Random.randomFromInterval(25, 75) / 100;
+            let chance = Utilities_1.Random.nextIntInRange(25, 75) / 100;
             for (let i in game.crafted) {
-                let f = Utilities.Random.nextFloat();
+                let f = Utilities_1.Random.nextFloat();
                 if (f < chance) {
                     this.lostRecipes.push(Number(i));
                     delete game.crafted[i];
@@ -52,5 +52,5 @@ define(["require", "exports"], function (require, exports) {
         }
     }
     Object.defineProperty(exports, "__esModule", { value: true });
-    exports.default = Mod;
+    exports.default = Amnesia;
 });

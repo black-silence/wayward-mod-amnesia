@@ -1,6 +1,7 @@
-/// <reference path="mod-reference/modreference.d.ts"/>
+import { Random } from "Utilities";
+import Mod from "mod/Mod";
 
-export default class Mod extends Mods.Mod {
+export default class Amnesia extends Mod {
 
     private lostRecipes: number[];
 
@@ -77,10 +78,10 @@ export default class Mod extends Mods.Mod {
         }
 
         // 25% to 75% chance to lose any recipe
-        let chance = Utilities.Random.randomFromInterval(25, 75) / 100;
+        let chance = Random.nextIntInRange(25, 75) / 100;
 
         for (let i in game.crafted) {
-            let f = Utilities.Random.nextFloat();
+            let f = Random.nextFloat();
             if (f < chance) {
                 this.lostRecipes.push(Number(i));
                 delete game.crafted[i];
