@@ -26,7 +26,7 @@ export default class Amnesia extends Mod {
                 delete game.crafted[craftedId];
             }
             // Want to display the new craft table right from the start
-            game.updateCraftTableAndWeight();
+            game.updateTablesAndWeight();
         } else {
             this.lostRecipes = [];
         }
@@ -90,7 +90,7 @@ export default class Amnesia extends Mod {
 
         // Want to display the new craft table right from the start.
         // This is only called once per loading game so it shouldn't hurt
-        game.updateCraftTableAndWeight();
+        game.updateTablesAndWeight();
 
     }
 

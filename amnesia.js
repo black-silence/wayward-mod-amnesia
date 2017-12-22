@@ -10,7 +10,7 @@ define(["require", "exports", "Utilities", "mod/Mod"], function (require, export
                     let craftedId = this.lostRecipes[r];
                     delete game.crafted[craftedId];
                 }
-                game.updateCraftTableAndWeight();
+                game.updateTablesAndWeight();
             }
             else {
                 this.lostRecipes = [];
@@ -48,7 +48,7 @@ define(["require", "exports", "Utilities", "mod/Mod"], function (require, export
                     delete game.crafted[i];
                 }
             }
-            game.updateCraftTableAndWeight();
+            game.updateTablesAndWeight();
         }
     }
     Object.defineProperty(exports, "__esModule", { value: true });

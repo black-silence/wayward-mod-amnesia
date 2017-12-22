@@ -9,8 +9,7 @@
 		"OnGameStart"
 	],
 	"compatibleMinorVersions": [
-		3,
-		4
+		5
 	],
 	"publishedFileId": "783713640"
 }
