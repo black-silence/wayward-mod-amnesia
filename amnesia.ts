@@ -1,5 +1,6 @@
-import { Random } from "Utilities";
+import { Random, SeededGenerator } from "utilities/Random";
 import Mod from "mod/Mod";
+import { HookMethod } from "mod/IHookHost";
 
 export default class Amnesia extends Mod {
 
@@ -65,6 +66,7 @@ export default class Amnesia extends Mod {
      * @param isLoadingSave True if a save game was loaded
      * @param playedCount The number of times the player has played the game (globally, not per slot)
      */
+    @HookMethod
     public onGameStart(isLoadingSave: boolean, playedCount: number): void {
 
         if (isLoadingSave) {
@@ -77,11 +79,14 @@ export default class Amnesia extends Mod {
             return; // Don't want to kill new players' recipes
         }
 
+        let gen = new SeededGenerator();
+        let rdm = new Random(gen);
+
         // 25% to 75% chance to lose any recipe
-        let chance = Random.nextIntInRange(25, 75) / 100;
+        let chance = rdm.intInRange(25, 75) / 100;
 
         for (let i in game.crafted) {
-            let f = Random.nextFloat();
+            let f = rdm.float();
             if (f < chance) {
                 this.lostRecipes.push(Number(i));
                 delete game.crafted[i];

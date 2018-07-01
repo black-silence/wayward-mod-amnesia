@@ -5,11 +5,8 @@
 	"author": "black silence",
 	"unloadable": true,
 	"file": "amnesia.js",
-	"hooks": [
-		"OnGameStart"
-	],
 	"compatibleMinorVersions": [
-		5
+		6
 	],
 	"publishedFileId": "783713640"
 }

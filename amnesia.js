@@ -1,4 +1,10 @@
-define(["require", "exports", "Utilities", "mod/Mod"], function (require, exports, Utilities_1, Mod_1) {
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+define(["require", "exports", "utilities/Random", "mod/Mod", "mod/IHookHost"], function (require, exports, Random_1, Mod_1, IHookHost_1) {
     "use strict";
     class Amnesia extends Mod_1.default {
         onInitialize(saveDataGlobal) {
@@ -40,9 +46,11 @@ define(["require", "exports", "Utilities", "mod/Mod"], function (require, export
             if (playedCount < 10) {
                 return;
             }
-            let chance = Utilities_1.Random.nextIntInRange(25, 75) / 100;
+            let gen = new Random_1.SeededGenerator();
+            let rdm = new Random_1.Random(gen);
+            let chance = rdm.intInRange(25, 75) / 100;
             for (let i in game.crafted) {
-                let f = Utilities_1.Random.nextFloat();
+                let f = rdm.float();
                 if (f < chance) {
                     this.lostRecipes.push(Number(i));
                     delete game.crafted[i];
@@ -51,6 +59,9 @@ define(["require", "exports", "Utilities", "mod/Mod"], function (require, export
             game.updateTablesAndWeight();
         }
     }
+    __decorate([
+        IHookHost_1.HookMethod
+    ], Amnesia.prototype, "onGameStart", null);
     Object.defineProperty(exports, "__esModule", { value: true });
     exports.default = Amnesia;
 });
